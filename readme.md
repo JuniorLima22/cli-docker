@@ -131,18 +131,19 @@ docker-compose exec --user=laradock [containerId||nameContainer] bash
 docker-composer ps
 ```
 
-# Referências
+## Referências
 
 - Pesquisa
 
-    - [Docker com VS Code](https://docs.microsoft.com/pt-br/visualstudio/docker/tutorials/docker-tutorial?WT.mc_id=vscode_docker_aka_getstartedwithdocker) neste tutorial, você aprenderá a criar e implantar aplicativos do docker em Windows ou Mac usando Visual Studio Code.
+  - [Docker com VS Code](https://docs.microsoft.com/pt-br/visualstudio/docker/tutorials/docker-tutorial?WT.mc_id=vscode_docker_aka_getstartedwithdocker) neste tutorial, você aprenderá a criar e implantar aplicativos do docker em Windows ou Mac usando Visual Studio Code.
 
-    - [Laravel + Docker = Laradock](https://youtu.be/GienvDWdBmo) Crie um ambiente com Laravel e Docker de maneira rápida, simples e fácil.
+  - [Laravel + Docker = Laradock](https://youtu.be/GienvDWdBmo) Crie um ambiente com Laravel e Docker de maneira rápida, simples e fácil.
 
 ### Wakatime
+
 Tempo gasto no IDE para este repositório, rastreado automaticamente com [wakatime](https://wakatime.com/) .
 
-[![wakatime](https://wakatime.com/badge/github/JuniorLima22/titansoftware.svg)](https://wakatime.com/badge/github/JuniorLima22/titansoftware)
+[![wakatime](https://wakatime.com/badge/github/JuniorLima22/cli-docker.svg)](https://wakatime.com/badge/github/JuniorLima22/cli-docker)
 
 ### Autor
 
