@@ -10,7 +10,6 @@
 
 ```bash
 docker --help
-
 # New sintaxe
 docker container --help
 ```
@@ -18,7 +17,7 @@ docker container --help
 ### Executar Imagem
 
 ```bash
-docker run -d -p 80:80 --name [nameContainer] docker/getting-started
+docker run -d -p 80:80 --name [containerName] docker/getting-started
 ```
 
 - <code>-d</code> executar o contêiner no modo desanexado (em segundo plano)
@@ -32,28 +31,39 @@ docker run -d -p 80:80 --name [nameContainer] docker/getting-started
 ### Executar um comando em um novo contêiner com <code>bash</code> interativo
 
 ```bash
-docker run -it [containerId||nameContainer]
+docker run -it [containerId||containerName]
 ```
 
 ### Executar um comando dentro do contêiner em execução com <code>bash</code> interativo
 
 ```bash
-docker exec -it [containerId||nameContainer] /bin/bash
+docker exec -it [containerId||containerName] /bin/bash
 ```
 
 ```bash
-docker exec -it [containerId||nameContainer] bash
+docker exec -it [containerId||containerName] bash
 ```
 
+### Executa comandos dentro do contêiner diretamente
+
 ```bash
-# Executa comandos dentro do contêiner sem acessar o bash
-docker exec [containerId||nameContainer] [command]
+docker exec [containerId||containerName] [command]
 ```
 
 ### Baixar imagem do Hub Docker
 
 ```bash
-docker pull [name-image]
+docker pull [imageName]
+```
+
+### Baixar imagem especifica do Hub Docker (TAG)
+
+```bash
+docker pull debian:10
+```
+
+```bash
+docker pull debian:buster
 ```
 
 ### Listar Imagens
@@ -65,7 +75,7 @@ docker images
 ### Excluir Imagens
 
 ```bash
-docker rmi [containerId||nameContainer]
+docker rmi [containerId||containerName]
 ```
 
 ### Listar contêiner em execução
@@ -81,25 +91,79 @@ docker container ls
 ### Parar contêiner em execução
 
 ```bash
-docker stop [containerId||nameContainer]
+docker stop [containerId||containerName]
+```
+
+### Iniciar contêiner
+
+```bash
+docker start [containerId||containerName]
 ```
 
 ### Excluir contêiner
 
 ```bash
-docker rm [containerId||nameContainer]
+docker rm [containerId||containerName]
 ```
 
 ### Copiando arquivos da maquina local para contêiner
 
 ```bash
-docker cp [diretório/origem/meuArquivoLocal.txt] [containerId||nameContainer]:[/diretório/destino]
+docker cp [diretório/origem/meuArquivoLocal.txt] [containerId||containerName]:[/diretório/destino]
 ```
 
 ### Copiando arquivos do contêiner para maquina local
 
 ```bash
-docker cp [containerId||nameContainer]:[/diretório/origem] [diretório/destino/meuArquivoLocal.txt]
+docker cp [containerId||containerName]:[/diretório/origem] [diretório/destino/meuArquivoLocal.txt]
+```
+
+### Retornar informações de baixo nível sobre objetos do Docker
+
+```bash
+docker inspect [containerId||containerName]
+```
+
+```bash
+docker inspect [containerId||containerName]
+```
+
+## Criando um contêiner de Mysql
+
+```bash
+docker run -d -e MYSQL_ROOT_PASSWORD=Senha123 -p 3306:3306 --name mysql-A mysql
+```
+
+- <code>-d</code> executar o contêiner no modo desanexado (em segundo plano)
+
+- <code>-p 3306:3306</code>  mapear a porta 80 do host para a porta 80 no contêiner
+
+- <code>-e</code> definir variáveis de ambiente
+
+### Acessar servidor Mysql
+
+```bash
+mysql -u root -p --protocol=tcp --port=3606
+```
+
+### Criar tabela no Mysql
+
+```bash
+CREATE DATABASE teste;
+```
+
+### Listar tabelas no Mysql
+
+```bash
+SHOW DATABASES;
+```
+
+### Montando (Mount) um local de armazenamento na maquina local
+
+OBS: Consultar dentro do contêiner o local onde está sendo salvo o banco de dados com o comando <code>docker inspect [containerId||containerName]</code> no índice <code>Mounts</code>: <code>Destination</code>
+
+```bash
+docker run -d -e MYSQL_ROOT_PASSWORD=Senha123 -p 3306:3306 --name [containerName] mysql --volume=[diretorioLocal]:[diretorioConteiner||/var/lib/mysql]
 ```
 
 <h1 align="center">LARADOCK</h1>
@@ -114,15 +178,15 @@ docker-compose up -d nginx mysql phpmyadmin redis
 ### Acessar contêiner
 
 ```bash
-docker exec -it [containerId||nameContainer] /bin/sh
+docker exec -it [containerId||containerName] /bin/sh
 # OR
-docker exec -it [containerId||nameContainer] /bin/bash
+docker exec -it [containerId||containerName] /bin/bash
 ```
 
 ### Executar comandos com Bash interativo
 
 ```bash
-docker-compose exec --user=laradock [containerId||nameContainer] bash
+docker-compose exec --user=laradock [containerId||containerName] bash
 ```
 
 ### Listar contêiner em execução
