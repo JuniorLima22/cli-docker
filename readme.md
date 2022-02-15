@@ -1,4 +1,8 @@
-# DOCKER
+<p align="center" id="top">
+    <img alt="Readme" title="Readme GIF" src="banner.png" />
+</p>
+
+<h1 align="center">DOCKER</h1>
 
 ## Configurações iniciais do Docker
 
@@ -98,7 +102,7 @@ docker cp [diretório/origem/meuArquivoLocal.txt] [containerId||nameContainer]:[
 docker cp [containerId||nameContainer]:[/diretório/origem] [diretório/destino/meuArquivoLocal.txt]
 ```
 
-# LARADOCK
+<h1 align="center">LARADOCK</h1>
 
 ### Subir contêiner
 
@@ -135,6 +139,15 @@ docker-composer ps
 
     - [Laravel + Docker = Laradock](https://youtu.be/GienvDWdBmo) Crie um ambiente com Laravel e Docker de maneira rápida, simples e fácil.
 
+### Wakatime
+Tempo gasto no IDE para este repositório, rastreado automaticamente com [wakatime](https://wakatime.com/) .
+
+[![wakatime](https://wakatime.com/badge/github/JuniorLima22/titansoftware.svg)](https://wakatime.com/badge/github/JuniorLima22/titansoftware)
+
 ### Autor
 
-> Made with 💙 by JUNIOR LIMA 👋 [See my LinkedIn](https://www.linkedin.com/in/junior-lima-495108208/) • GitHub [@JuniorLima22](https://github.com/JuniorLima22)
+> Made with 💙 by JUNIOR LIMA 👋 <a href="https://www.linkedin.com/in/JuniorLima22/" target="_blank">See my LinkedIn</a> • GitHub <a href="https://github.com/JuniorLima22" target="_blank">@JuniorLima22</a>
+
+<p align="center">
+<sub><a href="#top" align="center">↑ voltar para o topo ↑</a></sub>
+</p>
