@@ -106,6 +106,32 @@ docker start [containerId||containerName]
 docker rm [containerId||containerName]
 ```
 
+### Informações, logs e processos dos contêiner
+
+#### Informação do servidor Docker
+
+```bash
+docker info
+```
+
+#### Logs do contêiner
+
+```bash
+docker logs [containerId||containerName]
+```
+
+#### Verificar processos em execução no contêiner
+
+```bash
+docker top [containerId||containerName]
+```
+
+### Excluir todos os contêineres parados
+
+```bash
+docker container prune
+```
+
 ### Copiando arquivos da maquina local para contêiner
 
 ```bash
@@ -119,10 +145,6 @@ docker cp [containerId||containerName]:[/diretório/origem] [diretório/destino/
 ```
 
 ### Retornar informações de baixo nível sobre objetos do Docker
-
-```bash
-docker inspect [containerId||containerName]
-```
 
 ```bash
 docker inspect [containerId||containerName]
@@ -157,6 +179,7 @@ CREATE DATABASE teste;
 ```bash
 SHOW DATABASES;
 ```
+## Volume
 
 ### Montando (Mount) um local de armazenamento na maquina local
 
@@ -164,6 +187,66 @@ OBS: Consultar dentro do contêiner o local onde está sendo salvo o banco de da
 
 ```bash
 docker run -d -e MYSQL_ROOT_PASSWORD=Senha123 -p 3306:3306 --name [containerName] mysql --volume=[diretorioLocal]:[diretorioConteiner||/var/lib/mysql]
+```
+
+### No Windows utilizar aspas duplas ao passar <code>[diretorioLocal]</code> exemplo com um contêiner Apache2
+
+```bash
+docker run -d --name apache-C httpd -p 80:80 --volume="C:\data\apache":/usr/local/apache2/htdocs
+```
+
+### Excluir volume
+
+```bash
+docker volume rm [volumeId||volumeName]
+```
+
+### Excluir todos os volume que não estão em uso
+
+```bash
+docker volume prune
+```
+
+## Criando um contêiner com PHP-Apache
+
+```bash
+docker pull php:7.4-apache
+```
+
+### Download da Imagem
+
+```bash
+docker pull php:7.4-apache
+```
+
+### Executar contêiner
+
+```bash
+docker run -d -p 80:80 --name my-apache-php-app -v "$PWD":/var/www/html php:7.2-apache
+
+docker run -d --name php-AB php:7.4-apache -p 8080:80 --volume="C:\laragon\www\cli-docker\data\php-A":/var/www/html
+```
+
+## Limitando memória e CPU e atualizando contêiner
+
+```bash
+docker stats [containerId||containerName]
+```
+
+```bash
+docker update [containerId||containerName] -m 128M --cpus 0.2
+```
+
+### Teste de Stress no contêiner
+
+#### Instale Stress no sistema operacinal (Exemplo: Ubuntu)
+
+```bash
+apt -y install stress 
+```
+
+```bash
+stress --cpu 1 --vm-bytes 50m --vm 1 --vm-bytes-50m
 ```
 
 <h1 align="center">LARADOCK</h1>
