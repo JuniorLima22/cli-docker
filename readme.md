@@ -106,6 +106,12 @@ docker start [containerId||containerName]
 docker rm [containerId||containerName]
 ```
 
+### Excluir todos os contêineres parados
+
+```bash
+docker container prune
+```
+
 ### Informações, logs e processos dos contêiner
 
 #### Informação do servidor Docker
@@ -126,10 +132,36 @@ docker logs [containerId||containerName]
 docker top [containerId||containerName]
 ```
 
-### Excluir todos os contêineres parados
+### Analisando a rede dos contêineres
+
+#### Listar redes dos contêineres
 
 ```bash
-docker container prune
+docker network ls
+```
+
+#### Exibir informações detalhadas sobre uma ou mais redes
+
+```bash
+docker network inspect [networkName]
+```
+
+#### Criando rede
+
+```bash
+docker network create [networkName]
+```
+
+#### Deletando rede
+
+```bash
+docker network rm [networkName]
+```
+
+#### Especificando rede para o contêiner
+
+```bash
+docker run -dti --name [containerName] --network [networkName] [image]
 ```
 
 ### Copiando arquivos da maquina local para contêiner
