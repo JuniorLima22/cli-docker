@@ -281,6 +281,24 @@ apt -y install stress
 stress --cpu 1 --vm-bytes 50m --vm 1 --vm-bytes-50m
 ```
 
+## Criando imagem e Build de contêiner a partir de um Dockerfile
+
+```bash
+docker image build ${DIR_DOCKERFILE} -t [imageName]
+```
+
+### Exemplo de imagem com Apache
+
+```bash
+ docker image build images/debian-apache -t debian-apache:1.0
+```
+
+### Exemplo de contêiner com Apache
+
+```bash
+$ docker run -dti --name meu-apache -p 81:80 debian-apache:1.0
+```
+
 <h1 align="center">LARADOCK</h1>
 
 ### Subir contêiner
